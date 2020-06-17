@@ -9,6 +9,7 @@ namespace onlinelearningbackend.Repo.IManager
    public interface IProjectManager
     {
         ProjectModel GetProjectById(int ProjectId);
+        IEnumerable<ProjectModel> GetAllProjects();
         IEnumerable<ProjectModel> GetProjectByTrackId(int TrackId);
         IEnumerable<ProjectModel> GetProjectByStudentId(string StudentId);
         ProjectModel AddProjectByTrackId(ProjectModel NewProject,int TrackId, string StudentId);

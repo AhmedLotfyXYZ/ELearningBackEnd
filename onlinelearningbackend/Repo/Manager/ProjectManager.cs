@@ -17,6 +17,12 @@ namespace onlinelearningbackend.Repo.Manager
             DB = _DB;
         }
 
+        public IEnumerable<ProjectModel>  GetAllProjects()
+        {
+            var projects = DB.ProjectModels.FromSqlRaw("EXEC dbo.usp_ProjectModels_Select").ToList<ProjectModel>();
+            return projects;
+        }
+
         public ProjectModel GetProjectById(int ProjectId)
         {
             var projects= DB.ProjectModels.FromSqlRaw("EXEC dbo.usp_ProjectModel_Select_By_Id {0}", ProjectId).ToList<ProjectModel>().FirstOrDefault();
@@ -54,5 +60,7 @@ namespace onlinelearningbackend.Repo.Manager
             DB.ProjectModels.FromSqlRaw("EXEC dbo.usp_ProjectModel_Delete {0}",ProjectId);
             
         }
+
+       
     }
 }

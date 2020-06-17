@@ -20,6 +20,32 @@ namespace onlinelearningbackend.Controllers
         {
             ProjectManager = _PM;
         }
+
+
+
+
+        [HttpGet]
+        [Route("api/selectProjects")]
+        public IActionResult GetAllProjects()
+        {
+
+
+            var Project = ProjectManager.GetAllProjects();
+
+            if (Project == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(Project);
+            }
+
+        }
+
+
+
+
         //IEnumerable<ProjectModel> GetProjectById(int ProjectId);
         [HttpGet]
         [Route("api/Project/Project/{ProjectId}")]
